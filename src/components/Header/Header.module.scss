@@ -1,0 +1,68 @@
+.container {
+  max-width: 1460px;
+  width: 100%;
+  padding: 40px 20px;
+  margin: 0 auto;
+
+  nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+}
+
+.logo {
+  height: 70px;
+  width: auto;
+}
+
+.links {
+  display: flex;
+  gap: 32px;
+}
+
+.link {
+  color: rgb(40, 40, 40);
+  font-size: 20px;
+  font-weight: 500;
+  line-height: 130%;
+  text-decoration: none;
+  transition: color 0.3s;
+  white-space: nowrap;
+  transition: all 0.3s ease-in-out;
+
+  &:hover {
+    color: #0d50ff;
+  }
+
+  &:visited,
+  &:active,
+  &:focus,
+  &:hover {
+    text-decoration: none;
+  }
+}
+
+.activeLink {
+  color: #0d50ff;
+  text-decoration: none;
+  font-size: 20px;
+  line-height: 130%;
+
+  &:visited,
+  &:active,
+  &:focus,
+  &:hover {
+    text-decoration: none;
+  }
+}
+
+.cartImg {
+  height: 45px;
+  width: auto;
+  transition: transform 0.3s;
+}
+
+.cartImg:hover {
+  transform: scale(1.3);
+}
