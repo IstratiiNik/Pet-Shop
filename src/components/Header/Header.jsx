@@ -6,7 +6,7 @@ import styles from "./Header.module.scss";
 
 const Header = () => {
   return (
-    <div className={styles.container}>
+    <header>
       <nav>
         <div className={styles.logo}>
           <NavLink to="/">
@@ -54,7 +54,7 @@ const Header = () => {
           </NavLink>
         </div>
       </nav>
-    </div>
+    </header>
   );
 };
 
