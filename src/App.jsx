@@ -1,10 +1,17 @@
-import "./App.css";
+import { Routes, Route } from "react-router-dom";
+import { ROUTES } from "./utils/routes";
 import Layout from "./layout/Layout";
+import Main from "./pages/Main/Main";
+import "./App.css";
 
 function App() {
   return (
     <>
-      <Layout></Layout>
+      <Layout>
+        <Routes>
+          <Route path={ROUTES.MAIN} element={<Main />} />
+        </Routes>
+      </Layout>
     </>
   );
 }
