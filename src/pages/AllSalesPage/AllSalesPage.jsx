@@ -1,26 +1,31 @@
-import React from "react";
-import styles from "./Sale.module.scss";
-import { ROUTES } from "../../utils/routes";
-import { Link } from "react-router-dom";
-import ProductCard from "../ProductCard/ProductCard";
-import { useSelector } from "react-redux";
+import React, { useEffect } from "react";
+import styles from "../../components/Sale/Sale.module.scss";
+import { useDispatch, useSelector } from "react-redux";
 import { selectProducts } from "../../redux/selectors";
+import { fetchProductsAll } from "../../redux/petSlice";
 import { calculateDiscountPercent } from "../../utils/discount";
+import ProductCard from "../../components/ProductCard/ProductCard";
 
-const Sale = () => {
+const AllSalesPage = () => {
+  // Get products from Redux store
+  const dispatch = useDispatch();
   const allProducts = useSelector(selectProducts);
-  const saleProducts = allProducts
-    .filter((product) => product.discont_price !== null)
-    .slice(0, 4);
 
+  // Filter products with a discount price
+  const saleProducts = allProducts.filter(
+    (product) => product.discont_price !== null
+  );
+
+  // Fetch all products on mount
+  useEffect(() => {
+    dispatch(fetchProductsAll());
+  }, [dispatch]);
+
+  // Render sale products list
   return (
     <section className={styles.sale}>
       <header className={styles.header}>
-        <h2>Sale</h2>
-        <div className={styles.devider}></div>
-        <Link className={styles.link} to={ROUTES.SALES}>
-          All sales
-        </Link>
+        <h2>All sale</h2>
       </header>
       <ul className={styles.list}>
         {saleProducts.map(({ id, image, title, discont_price, price }) => {
@@ -45,4 +50,4 @@ const Sale = () => {
   );
 };
 
-export default Sale;
+export default AllSalesPage;
