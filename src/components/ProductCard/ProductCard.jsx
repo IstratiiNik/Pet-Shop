@@ -18,6 +18,8 @@ const ProductCard = ({
         {discountPercent > 0 && (
           <div className={styles.discountBadge}>-{discountPercent}%</div>
         )}
+        {/* Buy button appears on hover */}
+        <button className={styles.buyButton}>Buy</button>
       </div>
       <div className={styles.content}>
         <h3>{title}</h3>
@@ -28,7 +30,7 @@ const ProductCard = ({
               <span className={styles.original}>$ {price}</span>
             </>
           ) : (
-            <span>$ {price}</span>
+            <span className={styles.discounted}>$ {price}</span>
           )}
         </div>
       </div>

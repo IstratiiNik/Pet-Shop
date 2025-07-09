@@ -3,7 +3,7 @@
   flex-direction: column;
   align-items: center;
   gap: 16px;
-  border: 1px solid #ddd;
+  border: 1px solid rgb(221, 221, 221);
   border-radius: 12px;
   max-width: 316px;
   width: 100%;
@@ -29,15 +29,46 @@
       right: 16px;
       z-index: 1;
       padding: 4px 8px;
-      background: #0d50ff;
+      background: rgb(13, 80, 255);
       border-radius: 6px;
-      color: #fff;
+      color: rgb(255, 255, 255);
       font-weight: 600;
       font-size: 20px;
       line-height: 1.3;
       letter-spacing: 0.03em;
       box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
     }
+
+    .buyButton {
+      position: absolute;
+      left: 50%;
+      bottom: 16px;
+      transform: translateX(-50%);
+      width: 90%;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s;
+      padding: 12px 0;
+      background: rgb(13, 80, 255);
+      color: rgb(255, 255, 255);
+      border: none;
+      border-radius: 8px;
+      font-size: 18px;
+      font-weight: 600;
+      cursor: pointer;
+      z-index: 2;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+      text-align: center;
+      &:active {
+        background: rgb(8, 50, 150);
+      }
+    }
+  }
+
+  &:hover .imageWrapper .buyButton,
+  .imageWrapper:hover .buyButton {
+    opacity: 1;
+    pointer-events: auto;
   }
 
   .content {
@@ -52,7 +83,7 @@
       font-size: 20px;
       line-height: 1.3;
       text-align: center;
-      color: #282828;
+      color: rgb(40, 40, 40);
       margin-bottom: 16px;
       flex-grow: 1;
     }
@@ -68,7 +99,7 @@
           font-weight: 600;
           font-size: 40px;
           line-height: 1.1;
-          color: #282828;
+          color: rgb(40, 40, 40);
         }
 
         &.original {
@@ -76,15 +107,15 @@
           font-size: 20px;
           line-height: 1.3;
           text-decoration: line-through;
-          color: #8b8b8b;
+          color: rgb(139, 139, 139);
         }
       }
 
-      &:only-child span {
+      span:not(.original) {
         font-weight: 600;
         font-size: 40px;
         line-height: 1.1;
-        color: #282828;
+        color: rgb(40, 40, 40);
       }
     }
   }

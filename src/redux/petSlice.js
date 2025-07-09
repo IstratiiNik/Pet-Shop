@@ -3,7 +3,7 @@ import {
   requestCategoryAll,
   requestCategoryById,
   requestProductsAll,
-  requestProductById, // Added import for requestProductById
+  requestProductById,
 } from "../services/api";
 
 // Thunk to fetch all categories
