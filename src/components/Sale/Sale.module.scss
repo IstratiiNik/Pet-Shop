@@ -1,0 +1,155 @@
+.sale {
+  max-width: 1460px;
+  padding: 40px 20px 53px;
+  margin: 0 auto;
+
+  .header {
+    padding-bottom: 40px;
+    display: flex;
+    align-items: center;
+
+    h2 {
+      font-weight: 700;
+      font-size: 64px;
+      line-height: 1.1;
+      color: rgb(40, 40, 40);
+      margin-right: 32px;
+    }
+
+    .devider {
+      border: 1px solid rgb(221, 221, 221);
+      width: 100%;
+    }
+
+    .link {
+      border: 1px solid rgb(221, 221, 221);
+      border-radius: 6px;
+      padding: 8px 16px;
+      color: rgb(139, 139, 139);
+      min-width: 142px;
+      text-decoration: none;
+      text-align: center;
+    }
+  }
+
+  .list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 32px;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+    border: 1px solid rgb(221, 221, 221);
+    border-radius: 12px;
+    max-width: 316px;
+    width: 100%;
+
+    .img {
+      border-radius: 12px;
+      max-width: 316px;
+      max-height: 350px;
+      object-fit: cover;
+      object-position: center;
+      width: 100%;
+    }
+
+    .card {
+      padding: 0 32px 34px 32px;
+      width: 100%;
+    }
+
+    .title {
+      font-weight: 500;
+      font-size: 20px;
+      line-height: 1.3;
+      text-align: center;
+      color: rgb(40, 40, 40);
+      margin-bottom: 16px;
+    }
+
+    .price-wrap {
+      display: flex;
+      align-items: flex-end;
+      gap: 20px;
+    }
+
+    .price {
+      font-weight: 600;
+      font-size: 40px;
+      line-height: 1.1;
+      color: rgb(40, 40, 40);
+    }
+
+    .pricesale {
+      font-weight: 500;
+      font-size: 20px;
+      line-height: 1.3;
+      text-decoration: line-through;
+      color: rgb(139, 139, 139);
+    }
+  }
+
+  .discounts-wrap {
+    position: relative;
+  }
+
+  .discounts {
+    border-radius: 6px;
+    padding: 4px 8px;
+    background: rgb(13, 80, 255);
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 1.3;
+    letter-spacing: 0.03em;
+    color: rgb(255, 255, 255);
+    position: absolute;
+    top: 16px;
+    right: 16px;
+  }
+}
+
+// Responsive: stack elements in a column on small screens
+@media (max-width: 700px) {
+  .sale {
+    padding: 24px 4px 32px;
+
+    .header {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 16px;
+
+      h2 {
+        margin-right: 0;
+        margin-bottom: 8px;
+        font-size: 36px;
+      }
+
+      .devider {
+        width: 100%;
+        margin-bottom: 8px;
+      }
+
+      .link {
+        margin-left: 0;
+        min-width: 120px;
+        width: auto;
+      }
+    }
+
+    .list {
+      grid-template-columns: 1fr;
+      gap: 20px;
+    }
+
+    .item {
+      max-width: 100%;
+    }
+  }
+}
