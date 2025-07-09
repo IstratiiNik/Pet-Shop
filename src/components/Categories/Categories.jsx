@@ -11,16 +11,19 @@ import { fetchCategoriesAll } from "../../redux/petSlice";
 import { PulseLoader } from "react-spinners";
 
 const Categories = () => {
+  // Get Redux state and router info
   const dispatch = useDispatch();
   const categories = useSelector(selectCategories) || [];
   const isLoading = useSelector(selectCategoriesLoading);
   const location = useLocation();
-  const HomePage = location.pathname === ROUTES.MAIN;
+  const isHomePage = location.pathname === ROUTES.MAIN;
 
+  // Fetch all categories on mount
   useEffect(() => {
     dispatch(fetchCategoriesAll());
   }, [dispatch]);
 
+  // Show loader while fetching categories
   if (isLoading) {
     return (
       <div className={styles.loading}>
@@ -29,8 +32,10 @@ const Categories = () => {
     );
   }
 
-  const displayedCategories = HomePage ? categories.slice(0, 4) : categories;
+  // Show only 4 categories on home page, all otherwise
+  const displayedCategories = isHomePage ? categories.slice(0, 4) : categories;
 
+  // Render categories list
   return (
     <section className={styles.categories}>
       <header className={styles.header}>
