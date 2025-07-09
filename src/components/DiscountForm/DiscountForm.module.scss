@@ -1,0 +1,77 @@
+.discount {
+  padding: 32px 20px;
+
+  .container {
+    max-width: 1460px;
+    margin: 0 auto;
+    width: 100%;
+  }
+
+  .card {
+    border-radius: 12px;
+    padding: 32px 32px 0 32px;
+    background: linear-gradient(220deg, #2451c6 0%, #0d50ff 100%);
+    display: flex;
+    flex-direction: column;
+
+    h2 {
+      margin-bottom: 32px;
+      text-align: center;
+      font-weight: 700;
+      font-size: 48px;
+      line-height: 1.1;
+      color: #fff;
+    }
+
+    .content {
+      display: flex;
+      gap: 32px;
+      align-items: stretch;
+      justify-content: center;
+      position: relative;
+      min-height: 300px;
+
+      .image {
+        flex: 1 1 50%;
+        min-width: 320px;
+        min-height: 300px;
+        background: url(../../assets/main/discount_form.png) no-repeat
+          center/contain;
+        border-radius: 8px;
+        background-color: transparent;
+        align-self: flex-end;
+      }
+
+      .form {
+        flex: 1 1 40%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        min-width: 320px;
+        margin-bottom: 32px;
+      }
+    }
+  }
+}
+
+// Responsive styles
+@media (max-width: 900px) {
+  .discount {
+    .card {
+      h2 {
+        font-size: 32px;
+      }
+      .content {
+        flex-direction: column;
+        align-items: center;
+        gap: 24px;
+
+        .form,
+        .image {
+          min-width: 220px;
+          width: 100%;
+        }
+      }
+    }
+  }
+}
