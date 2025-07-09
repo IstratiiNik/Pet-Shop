@@ -1,30 +1,8 @@
 import React from "react";
 import styles from "./FormAction.module.scss";
 import { yupResolver } from "@hookform/resolvers/yup";
-import * as yup from "yup";
 import { useForm } from "react-hook-form";
-
-// Validation schema using yup
-const schema = yup
-  .object({
-    name: yup
-      .string()
-      .min(2, "Name must contain at least 2 characters")
-      .matches(/^[a-zA-Zа-яА-ЯіІїЇєЄґҐ'\s-]+$/, "Name can only contain letters")
-      .required("Name is required"),
-    phone: yup
-      .string()
-      .test("phone-format", "Invalid phone format", (value) => {
-        const deRegex = /^\+49\d{9,12}$/;
-        return deRegex.test(value);
-      })
-      .required("Phone number is required"),
-    email: yup
-      .string()
-      .email("Please enter a valid email address")
-      .required("Email is required"),
-  })
-  .required();
+import { orderSchema } from "../../utils/orderSchema";
 
 const FormAction = () => {
   // Initialize react-hook-form with validation
@@ -39,7 +17,7 @@ const FormAction = () => {
       phone: "",
       email: "",
     },
-    resolver: yupResolver(schema),
+    resolver: yupResolver(orderSchema),
   });
 
   // Handle form submission

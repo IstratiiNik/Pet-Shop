@@ -11,6 +11,7 @@ import persistStore from "redux-persist/es/persistStore";
 import persistReducer from "redux-persist/es/persistReducer";
 import storage from "redux-persist/lib/storage";
 import { petReducer } from "./petSlice";
+import { cartReducer } from "./cartSlice";
 
 // Persist config for pet slice
 const petPersistConfig = {
@@ -26,6 +27,7 @@ const persistedReducer = persistReducer(petPersistConfig, petReducer);
 export const store = configureStore({
   reducer: {
     pet: persistedReducer,
+    cart: cartReducer,
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({

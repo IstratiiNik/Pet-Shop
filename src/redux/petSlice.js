@@ -50,7 +50,7 @@ export const fetchProductById = createAsyncThunk(
   "pet/productById",
   async (productId, thunkApi) => {
     try {
-      const productById = await requestProductById(productId); // Fixed function call
+      const productById = await requestProductById(productId); 
       return productById;
     } catch (error) {
       return thunkApi.rejectWithValue(error.message);
@@ -120,7 +120,7 @@ const petSlice = createSlice({
         state.products.error = null;
       })
       .addCase(fetchProductsAll.fulfilled, (state, action) => {
-        state.products.isLoading = false; // Fixed: should set products.isLoading
+        state.products.isLoading = false; 
         state.products.all = action.payload;
       })
       .addCase(fetchProductsAll.rejected, (state, action) => {
@@ -135,7 +135,7 @@ const petSlice = createSlice({
       })
       .addCase(fetchProductById.fulfilled, (state, action) => {
         state.products.isLoading = false;
-        state.products.current = action.payload; // Save current product
+        state.products.current = action.payload;
       })
       .addCase(fetchProductById.rejected, (state, action) => {
         state.products.isLoading = false;

@@ -8,3 +8,5 @@ export const selectProducts = (state) => state.pet.products.all;
 export const selectProductsLoading = (state) => state.pet.products.isLoading;
 export const selectProductsError = (state) => state.pet.products.error;
 export const selectProductByCategory = (state) => state.pet.products.byCategory;
+
+export const selectCartItems = (state) => state.cart?.items || [];
