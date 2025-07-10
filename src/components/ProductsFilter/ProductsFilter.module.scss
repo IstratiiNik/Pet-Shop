@@ -1,0 +1,41 @@
+.filter {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  margin-bottom: 32px;
+  flex-wrap: wrap;
+}
+
+.label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 1rem;
+  color: #222;
+}
+
+.labelCheckbox {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 1rem;
+  color: #222;
+}
+
+.input {
+  width: 70px;
+  padding: 6px 10px;
+  border: 1px solid #eee;
+  border-radius: 8px;
+  background: #fafafa;
+  font-size: 1rem;
+}
+
+.select {
+  padding: 6px 18px;
+  border-radius: 8px;
+  background: #fafafa;
+  color: #222;
+  border: 1px solid #eee;
+  font-size: 1rem;
+}

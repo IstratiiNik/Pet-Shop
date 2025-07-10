@@ -1,0 +1,41 @@
+.breadcrumbs {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 24px;
+}
+
+.crumb {
+  display: flex;
+  align-items: center;
+  font-size: 1rem;
+  a {
+    padding: 6px 18px;
+    border-radius: 8px;
+    background: #fafafa;
+    color: #888;
+    text-decoration: none;
+    border: 1px solid #eee;
+    transition: background 0.2s, color 0.2s;
+    &:hover {
+      background: #f0f0f0;
+      color: #333;
+    }
+  }
+}
+
+.active {
+  padding: 6px 18px;
+  border-radius: 8px;
+  background: #fff;
+  color: #222;
+  font-weight: 600;
+  border: 1px solid #ddd;
+}
+
+.separator {
+  color: #ccc;
+  font-size: 1.2rem;
+  user-select: none;
+  margin: 0 2px;
+}

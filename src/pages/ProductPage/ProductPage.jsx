@@ -4,6 +4,7 @@ import { useParams } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { addToCart } from "../../redux/cartSlice";
 import { petInstance } from "../../services/api";
+import Breadcrumbs from "../../components/Breadcrumbs/Breadcrumbs";
 
 const ProductPage = () => {
   // Get product id from URL
@@ -18,6 +19,7 @@ const ProductPage = () => {
 
   // Fetch product data on mount or when id changes
   useEffect(() => {
+    window.scrollTo(0, 0);
     const fetchProduct = async () => {
       try {
         const { data } = await petInstance.get(`/products/${id}`);
@@ -51,7 +53,17 @@ const ProductPage = () => {
 
   return (
     <section className={styles.productPage}>
-      {/* Breadcrumbs can be added here */}
+      <Breadcrumbs
+        items={[
+          { label: "Main page", to: "/" },
+          { label: "Categories", to: "/categories" },
+          {
+            label: product?.categoryName || "Category",
+            to: `/categories/${product?.categoryId}`,
+          },
+          { label: product?.title },
+        ]}
+      />
       <div className={styles.breadcrumbs}></div>
       <div className={styles.container}>
         <div className={styles.gallery}>
