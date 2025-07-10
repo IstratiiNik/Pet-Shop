@@ -8,6 +8,7 @@ import AllSalesPage from "./pages/AllSalesPage/AllSalesPage";
 import AllProductsPage from "./pages/AllProductsPage/AllProductsPage";
 import CartPage from "./pages/CartPage/CartPage";
 import ProductPage from "./pages/ProductPage/ProductPage";
+import CategoryPage from "./pages/CategoryPage/CategoryPage";
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
         <Routes>
           <Route path={ROUTES.MAIN} element={<Main />} />
           <Route path={ROUTES.CATEGORIES} element={<CategoriesPage />} />
+          <Route path={ROUTES.CATEGORY} element={<CategoryPage />} />
           <Route path={ROUTES.SALES} element={<AllSalesPage />} />
           <Route path={ROUTES.PRODUCTS} element={<AllProductsPage />} />
           <Route path={ROUTES.PRODUCT} element={<ProductPage />} />
