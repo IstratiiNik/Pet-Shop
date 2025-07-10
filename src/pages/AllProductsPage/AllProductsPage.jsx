@@ -78,6 +78,7 @@ const AllProductsPage = () => {
         onDiscountedChange={setDiscountedOnly}
         sort={sort}
         onSortChange={setSort}
+		  showDiscountedCheckbox={true}
       />
       {/* Products list */}
       <ul className={styles.list}>

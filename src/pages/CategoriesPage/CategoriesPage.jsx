@@ -9,6 +9,7 @@ import { fetchCategoriesAll } from "../../redux/petSlice";
 import { Link } from "react-router-dom";
 import { ROUTES } from "../../utils/routes";
 import { PulseLoader } from "react-spinners";
+import Breadcrumbs from "../../components/Breadcrumbs/Breadcrumbs";
 
 const CategoriesPage = () => {
   // Get categories from Redux store
@@ -33,6 +34,9 @@ const CategoriesPage = () => {
   // Render categories list
   return (
     <section className={styles.categories}>
+      <Breadcrumbs
+        items={[{ label: "Main page", to: "/" }, { label: "Categories" }]}
+      />
       <header className={styles.header}>
         <h2>All categories</h2>
       </header>

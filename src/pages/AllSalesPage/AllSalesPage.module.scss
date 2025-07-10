@@ -1,0 +1,62 @@
+.sale {
+  max-width: 1460px;
+  padding: 40px 20px 53px;
+  margin: 0 auto;
+
+  .header {
+    display: flex;
+    align-items: center;
+
+    h2 {
+      font-weight: 700;
+      font-size: 64px;
+      line-height: 1.1;
+      color: #282828;
+      margin-right: 32px;
+    }
+  }
+
+  .filterRow {
+    display: flex;
+    gap: 16px;
+    margin: 32px 0 40px 0;
+    align-items: center;
+  }
+
+  .input {
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    padding: 8px 16px;
+    font-size: 18px;
+    width: 140px;
+    outline: none;
+    transition: border 0.2s;
+    &:focus {
+      border-color: #4356fa;
+    }
+  }
+
+  .select {
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    padding: 8px 16px;
+    font-size: 18px;
+    outline: none;
+    transition: border 0.2s;
+    background: #fff;
+    cursor: pointer;
+    min-width: 180px;
+    &:focus {
+      border-color: #4356fa;
+    }
+  }
+
+  .list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 32px;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+}

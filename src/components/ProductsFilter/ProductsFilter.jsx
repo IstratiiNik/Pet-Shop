@@ -10,6 +10,7 @@ const ProductsFilter = ({
   onDiscountedChange,
   sort,
   onSortChange,
+  showDiscountedCheckbox,
 }) => (
   <form className={styles.filter}>
     {/* Price range filter */}
@@ -33,14 +34,16 @@ const ProductsFilter = ({
       />
     </label>
     {/* Discounted items checkbox */}
-    <label className={styles.labelCheckbox}>
-      Discounted items
-      <input
-        type="checkbox"
-        checked={discountedOnly}
-        onChange={(e) => onDiscountedChange(e.target.checked)}
-      />
-    </label>
+    {showDiscountedCheckbox !== false && (
+      <label className={styles.labelCheckbox}>
+        Discounted items
+        <input
+          type="checkbox"
+          checked={discountedOnly}
+          onChange={(e) => onDiscountedChange(e.target.checked)}
+        />
+      </label>
+    )}
     {/* Sorting select */}
     <label className={styles.label}>
       Sorted
