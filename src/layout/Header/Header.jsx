@@ -12,7 +12,7 @@ const Header = () => {
   );
 
   return (
-    <header>
+    <header className={styles.header}>
       <nav>
         <div className={styles.logo}>
           <NavLink to="/">

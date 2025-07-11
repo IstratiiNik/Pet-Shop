@@ -6,6 +6,7 @@
   .header {
     display: flex;
     align-items: center;
+    margin-bottom: 32px;
 
     h2 {
       font-weight: 700;
@@ -13,6 +14,21 @@
       line-height: 1.1;
       color: #282828;
       margin-right: 32px;
+      white-space: nowrap;
+    }
+    .devider {
+      border: 1px solid rgb(221, 221, 221);
+      width: 100%;
+    }
+
+    .link {
+      border: 1px solid rgb(221, 221, 221);
+      border-radius: 6px;
+      padding: 8px 16px;
+      color: rgb(139, 139, 139);
+      min-width: 142px;
+      text-decoration: none;
+      text-align: center;
     }
   }
 

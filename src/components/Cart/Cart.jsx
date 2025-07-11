@@ -7,83 +7,93 @@ import {
   decrementQty,
   removeFromCart,
 } from "../../redux/cartSlice";
+import OrderForm from "../OrderForm/OrderForm";
 
 const Cart = () => {
-  // Get cart items from Redux store
   const cartItems = useSelector(selectCartItems);
   const dispatch = useDispatch();
 
-  // Calculate total price for the cart
-  const total = cartItems.reduce(
+  const totalAmount = cartItems.reduce(
     (sum, item) => sum + (item.discont_price || item.price) * item.quantity,
     0
   );
+  const totalQuantity = cartItems.reduce((sum, item) => sum + item.quantity, 0);
 
-  // Render cart items and summary
   return (
     <section className={styles.cart}>
       <h2 className={styles.title}>Shopping cart</h2>
-      {/* If cart is empty, show message */}
       {cartItems.length === 0 ? (
         <p className={styles.empty}>Your cart is empty.</p>
       ) : (
-        // Render list of cart items
-        <ul className={styles.list}>
-          {cartItems.map((item) => (
-            <li key={item.id} className={styles.item}>
-              {/* Product image */}
-              <img
-                className={styles.img}
-                src={`http://localhost:3333${item.image}`}
-                alt={item.title}
-              />
-              <div className={styles.info}>
-                {/* Product title */}
-                <h3 className={styles.name}>{item.title}</h3>
-                {/* Price and total for this item */}
-                <div className={styles.priceBlock}>
-                  <span className={styles.price}>
-                    ${Number(item.discont_price ?? item.price ?? 0).toFixed(2)}
-                  </span>
-                  <span className={styles.total}>
-                    Total: $
-                    {Number(
-                      (item.discont_price ?? item.price ?? 0) * item.quantity
-                    ).toFixed(2)}
-                  </span>
+        <div className={styles.productsSection}>
+          <ul className={styles.list}>
+            {cartItems.map((item) => (
+              <li key={item.id} className={styles.item}>
+                <img
+                  className={styles.img}
+                  src={`http://localhost:3333${item.image}`}
+                  alt={item.title}
+                />
+                <div className={styles.details}>
+                  <div className={styles.detailsTitleRow}>
+                    <h3 className={styles.detailsTitle}>{item.title}</h3>
+                    <button
+                      className={styles.removeBtn}
+                      onClick={() => dispatch(removeFromCart(item.id))}
+                      aria-label="Remove item"
+                      type="button"
+                    >
+                      ×
+                    </button>
+                  </div>
+                  <div className={styles.row}>
+                    <div className={styles.qtyBlock}>
+                      <button
+                        className={styles.qtyBtn}
+                        onClick={() => dispatch(decrementQty(item.id))}
+                      >
+                        -
+                      </button>
+                      <span className={styles.qty}>{item.quantity}</span>
+                      <button
+                        className={styles.qtyBtn}
+                        onClick={() => dispatch(incrementQty(item.id))}
+                      >
+                        +
+                      </button>
+                    </div>
+                    <div className={styles.priceBlock}>
+                      <span className={styles.price}>
+                        $
+                        {Number(item.discont_price ?? item.price ?? 0).toFixed(
+                          2
+                        )}
+                      </span>
+                      {item.discont_price && (
+                        <span className={styles.oldPrice}>
+                          ${Number(item.price).toFixed(2)}
+                        </span>
+                      )}
+                    </div>
+                  </div>
                 </div>
-                {/* Quantity controls */}
-                <div className={styles.qtyBlock}>
-                  <button
-                    className={styles.qtyBtn}
-                    onClick={() => dispatch(decrementQty(item.id))}
-                  >
-                    -
-                  </button>
-                  <span className={styles.qty}>{item.quantity}</span>
-                  <button
-                    className={styles.qtyBtn}
-                    onClick={() => dispatch(incrementQty(item.id))}
-                  >
-                    +
-                  </button>
-                  {/* Remove item from cart */}
-                  <button
-                    className={styles.removeBtn}
-                    onClick={() => dispatch(removeFromCart(item.id))}
-                  >
-                    Remove
-                  </button>
-                </div>
+              </li>
+            ))}
+          </ul>
+          {/* Order summary and form */}
+          <aside className={styles.rightContainer}>
+            <div className={styles.orderSummary}>
+              <h3 className={styles.summaryTitle}>Order details</h3>
+              <p className={styles.itemsCount}>
+                <span className={styles.itemsCount}>{totalQuantity}</span> items
+              </p>
+              <div className={styles.totalContainer}>
+                <p className={styles.itemsCount}>Total</p>
+                <p className={styles.amount}>${totalAmount.toFixed(2)}</p>
               </div>
-            </li>
-          ))}
-        </ul>
-      )}
-      {/* Cart summary */}
-      {cartItems.length > 0 && (
-        <div className={styles.summary}>
-          <span>Total: ${total.toFixed(2)}</span>
+              <OrderForm />
+            </div>
+          </aside>
         </div>
       )}
     </section>

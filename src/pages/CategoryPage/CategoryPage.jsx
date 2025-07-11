@@ -25,6 +25,7 @@ const CategoryPage = () => {
 
   // Fetch products for the category from server
   useEffect(() => {
+    window.scrollTo(0, 0); // Scroll to top on category change
     setLoading(true);
     petInstance
       .get(`/categories/${id}/`)

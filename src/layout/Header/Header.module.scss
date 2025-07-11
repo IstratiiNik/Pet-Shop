@@ -1,8 +1,9 @@
-header {
+.header {
   max-width: 1460px;
   width: 100%;
   padding: 40px 20px;
   margin: 0 auto;
+  border-bottom: 1px solid rgb(221, 221, 221);
 
   nav {
     display: flex;

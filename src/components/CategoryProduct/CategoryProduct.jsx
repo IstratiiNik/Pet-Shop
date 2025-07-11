@@ -21,8 +21,9 @@ const CategoryProduct = () => {
   const isLoading = useSelector(selectProductsLoading);
   const currentCategory = useSelector(selectCurrentCategory);
 
-  // Fetch category data on mount or when categoryId changes
+  // Scroll to top on category change
   useEffect(() => {
+    window.scrollTo(0, 0);
     dispatch(fetchCategoryById(categoryId));
   }, [dispatch, categoryId]);
 

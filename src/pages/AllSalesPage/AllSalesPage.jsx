@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
 import styles from "./AllSalesPage.module.scss";
 import { useDispatch, useSelector } from "react-redux";
+import { Link } from "react-router-dom";
+import { ROUTES } from "../../utils/routes";
 import { selectProducts } from "../../redux/selectors";
 import { fetchProductsAll } from "../../redux/petSlice";
 import { calculateDiscountPercent } from "../../utils/discount";
@@ -53,9 +55,13 @@ const AllSalesPage = () => {
         items={[{ label: "Main page", to: "/" }, { label: "All sales" }]}
       />
 
-      {/* Page header */}
+      {/* Page header with divider and link */}
       <header className={styles.header}>
         <h2>Discounted items</h2>
+        <div className={styles.devider}></div>
+        <Link className={styles.link} to={ROUTES.SALES}>
+          All sales
+        </Link>
       </header>
 
       {/* Filter and sort controls */}

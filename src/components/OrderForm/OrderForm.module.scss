@@ -2,11 +2,8 @@
   display: flex;
   flex-direction: column;
   min-width: 320px;
-  max-width: 340px;
-  background: #f6f7fa;
+  max-width: 485px;
   border-radius: 14px;
-  padding: 32px 28px 28px 28px;
-  box-shadow: 0 2px 12px rgba(67, 86, 250, 0.06);
 }
 
 .input {
@@ -17,6 +14,9 @@
   font-size: 1.1rem;
   background: #fff;
   color: #222;
+  max-width: 485px;
+  width: 100%;
+  box-sizing: border-box;
 }
 
 .errors {
@@ -37,6 +37,8 @@
   border-radius: 8px;
   cursor: pointer;
   transition: background 0.2s;
+  max-width: 485px;
+  width: 100%;
   &:hover,
   &:focus {
     background: #2d3ecf;
