@@ -39,7 +39,7 @@ const ProductCard = ({
             )
           }
         >
-          Buy
+          Add to cart
         </button>
       </div>
       <div className={styles.content}>

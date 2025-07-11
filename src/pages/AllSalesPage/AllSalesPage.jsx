@@ -58,10 +58,7 @@ const AllSalesPage = () => {
       {/* Page header with divider and link */}
       <header className={styles.header}>
         <h2>Discounted items</h2>
-        <div className={styles.devider}></div>
-        <Link className={styles.link} to={ROUTES.SALES}>
-          All sales
-        </Link>
+      
       </header>
 
       {/* Filter and sort controls */}

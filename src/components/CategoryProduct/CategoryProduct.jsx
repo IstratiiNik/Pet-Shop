@@ -8,7 +8,7 @@ import {
   selectProductsLoading,
 } from "../../redux/selectors";
 import { fetchCategoryById } from "../../redux/petSlice";
-import CardProduct from "../CardProduct/CardProduct";
+import ProductCard from "../ProductCard/ProductCard";
 import { PulseLoader } from "react-spinners";
 
 const CategoryProduct = () => {
@@ -57,7 +57,7 @@ const CategoryProduct = () => {
                   discont_price
                 );
                 return (
-                  <CardProduct
+                  <ProductCard
                     key={id}
                     id={id}
                     title={title}

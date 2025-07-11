@@ -8,6 +8,8 @@ import {
   removeFromCart,
 } from "../../redux/cartSlice";
 import OrderForm from "../OrderForm/OrderForm";
+import { Link } from "react-router-dom";
+import { ROUTES } from "../../utils/routes";
 
 const Cart = () => {
   const cartItems = useSelector(selectCartItems);
@@ -21,7 +23,13 @@ const Cart = () => {
 
   return (
     <section className={styles.cart}>
-      <h2 className={styles.title}>Shopping cart</h2>
+      <header className={styles.header}>
+        <h2>Shopping cart</h2>
+        <div className={styles.devider}></div>
+        <Link className={styles.link} to={ROUTES.PRODUCTS}>
+          Back to the store
+        </Link>
+      </header>
       {cartItems.length === 0 ? (
         <p className={styles.empty}>Your cart is empty.</p>
       ) : (

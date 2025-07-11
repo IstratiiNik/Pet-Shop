@@ -59,7 +59,6 @@ const OrderForm = ({ onSubmit: onOrderSubmit }) => {
     if (onOrderSubmit) {
       onOrderSubmit(data);
     } else {
-      // По умолчанию просто выводим в консоль
       console.log(data);
     }
   };

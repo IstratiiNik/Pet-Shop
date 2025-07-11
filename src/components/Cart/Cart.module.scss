@@ -72,13 +72,36 @@
     }
   }
 
-  .title {
-    font-weight: 700;
-    font-size: 40px;
-    line-height: 1.1;
-    color: rgb(40, 40, 40);
-    margin-bottom: 24px;
-    text-align: left;
+  .header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 32px;
+
+    h2 {
+      font-weight: 700;
+      font-size: 64px;
+      line-height: 1.1;
+      color: #282828;
+      margin-right: 32px;
+      white-space: nowrap;
+    }
+    .devider {
+      border: 1px solid rgb(221, 221, 221);
+      width: 100%;
+      flex-grow: 1;
+    }
+
+    .link {
+      border: 1px solid rgb(221, 221, 221);
+      border-radius: 6px;
+      padding: 8px 16px;
+      color: rgb(139, 139, 139);
+      min-width: 142px;
+      text-decoration: none;
+      text-align: center;
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
   }
 
   .list {
@@ -99,7 +122,7 @@
     background: #fff;
     position: relative;
     gap: 0;
-    align-items: center; // ВЫРАВНИВАЕТ КАРТИНКУ И КОНТЕНТ ПО ВЕРТИКАЛИ
+    align-items: center;
   }
 
   .img {
@@ -121,7 +144,7 @@
 
   .detailsTitleRow {
     display: flex;
-	 align-items: start;
+    align-items: start;
     justify-content: space-between;
     margin-bottom: 24px;
   }
