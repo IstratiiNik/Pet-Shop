@@ -31,7 +31,14 @@ const Cart = () => {
         </Link>
       </header>
       {cartItems.length === 0 ? (
-        <p className={styles.empty}>Your cart is empty.</p>
+        <>
+          <p className={styles.empty}>
+            Looks like you have no items in your basket currently.
+          </p>
+          <Link className={styles.button} to={ROUTES.PRODUCTS}>
+            Continue Shopping
+          </Link>
+        </>
       ) : (
         <div className={styles.productsSection}>
           <ul className={styles.list}>
