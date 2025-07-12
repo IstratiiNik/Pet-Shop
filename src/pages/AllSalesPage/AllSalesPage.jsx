@@ -1,8 +1,6 @@
 import React, { useEffect, useState } from "react";
 import styles from "./AllSalesPage.module.scss";
 import { useDispatch, useSelector } from "react-redux";
-import { Link } from "react-router-dom";
-import { ROUTES } from "../../utils/routes";
 import { selectProducts } from "../../redux/selectors";
 import { fetchProductsAll } from "../../redux/petSlice";
 import { calculateDiscountPercent } from "../../utils/discount";

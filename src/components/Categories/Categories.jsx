@@ -40,7 +40,7 @@ const Categories = () => {
     <section className={styles.categories}>
       <header className={styles.header}>
         <h2>Categories</h2>
-        <div className={styles.devider}></div>
+        <div className={styles.divider}></div>
         <Link className={styles.link} to={ROUTES.CATEGORIES}>
           All categories
         </Link>

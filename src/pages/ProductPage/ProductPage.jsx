@@ -16,6 +16,7 @@ const ProductPage = () => {
   const [loading, setLoading] = useState(true);
   const [qty, setQty] = useState(1);
   const [activeImg, setActiveImg] = useState(0);
+  const [error, setError] = useState(null);
 
   // Fetch product data on mount or when id changes
   useEffect(() => {
@@ -24,8 +25,10 @@ const ProductPage = () => {
       try {
         const { data } = await petInstance.get(`/products/${id}`);
         setProduct(Array.isArray(data) ? data[0] : data);
-      } catch (error) {
-        console.error("Error fetching product:", error);
+        setError(null);
+      } catch {
+        setError("Error fetching product.");
+        setProduct(null);
       } finally {
         setLoading(false);
       }
@@ -43,6 +46,8 @@ const ProductPage = () => {
   // Show loading or error state
   if (loading) {
     return <div className={styles.loading}>Loading...</div>;
+  } else if (error) {
+    return <div className={styles.error}>{error}</div>;
   } else if (!product) {
     return <div className={styles.error}>Product not found</div>;
   }

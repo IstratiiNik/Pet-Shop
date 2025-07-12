@@ -1,7 +1,7 @@
 import { Routes, Route } from "react-router-dom";
 import { ROUTES } from "./utils/routes";
 import Layout from "./layout/Layout";
-import Main from "./pages/Main/Main";
+import MainPage from "./pages/MainPage/MainPage";
 import "./App.css";
 import CategoriesPage from "./pages/CategoriesPage/CategoriesPage";
 import AllSalesPage from "./pages/AllSalesPage/AllSalesPage";
@@ -16,14 +16,14 @@ function App() {
     <>
       <Layout>
         <Routes>
-          <Route path={ROUTES.MAIN} element={<Main />} />
+          <Route path={ROUTES.MAIN} element={<MainPage />} />
           <Route path={ROUTES.CATEGORIES} element={<CategoriesPage />} />
           <Route path={ROUTES.CATEGORY} element={<CategoryPage />} />
           <Route path={ROUTES.SALES} element={<AllSalesPage />} />
           <Route path={ROUTES.PRODUCTS} element={<AllProductsPage />} />
           <Route path={ROUTES.PRODUCT} element={<ProductPage />} />
           <Route path={ROUTES.CART} element={<CartPage />} />
-			 <Route path="*" element={<ErrorPage />} />
+          <Route path="*" element={<ErrorPage />} />
         </Routes>
       </Layout>
     </>

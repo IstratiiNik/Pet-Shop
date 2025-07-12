@@ -9,12 +9,6 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-
-    @media (max-width: 700px) {
-      flex-direction: column;
-      align-items: flex-start;
-      gap: 16px;
-    }
   }
 }
 
@@ -31,7 +25,7 @@
     flex-direction: column;
     gap: 16px;
     align-items: flex-start;
-    margin-top: 16px; // отделяет ссылки от логотипа и корзины
+    margin-top: 16px;
   }
 }
 
@@ -113,4 +107,67 @@
   border: 2px solid #fff;
   z-index: 2;
   pointer-events: none;
+}
+
+.nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: relative;
+}
+
+.burger {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  z-index: 1101;
+
+  span {
+    display: block;
+    height: 4px;
+    width: 100%;
+    background: #282828;
+    border-radius: 2px;
+    margin: 4px 0;
+    transition: 0.3s;
+  }
+}
+
+@media (max-width: 900px) {
+  .burger {
+    display: flex;
+  }
+
+  .links {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: #fff;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+    padding: 24px 20px 16px 20px; 
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.07);
+    transform: translateY(-200%);
+    opacity: 0;
+    pointer-events: none;
+    transition: all 0.3s;
+    z-index: 1100;
+  }
+
+  .links.open {
+    transform: translateY(0);
+    opacity: 1;
+    pointer-events: auto;
+  }
+
+  .cart {
+    z-index: 1102;
+  }
 }

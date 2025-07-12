@@ -3,8 +3,11 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 import { useForm } from "react-hook-form";
 import styles from "./OrderForm.module.scss";
+import { requestSendOrder } from "../../services/api";
+import { useSelector } from "react-redux";
+import { selectCartItems } from "../../redux/selectors";
 
-// Схема валидации (можете доработать под свои требования)
+// Validation schema
 const schema = yup
   .object({
     name: yup
@@ -27,11 +30,16 @@ const schema = yup
   })
   .required();
 
-const OrderForm = ({ onSubmit: onOrderSubmit }) => {
+const OrderForm = ({ onSubmit: onOrderSubmit, onSuccess }) => {
+  // Get cart items from Redux store
+  const cartItems = useSelector(selectCartItems);
+
+  // Initialize react-hook-form
   const {
     register,
     handleSubmit,
     setValue,
+    reset,
     formState: { errors },
   } = useForm({
     defaultValues: {
@@ -42,7 +50,7 @@ const OrderForm = ({ onSubmit: onOrderSubmit }) => {
     resolver: yupResolver(schema),
   });
 
-  // Форматирование телефона
+  // Phone input formatting
   const formatPhoneInput = (e) => {
     let value = e.target.value.replace(/\D/g, "");
     if (value.length > 0 && !value.startsWith("+")) {
@@ -50,21 +58,46 @@ const OrderForm = ({ onSubmit: onOrderSubmit }) => {
         value = `+${value}`;
       }
     }
-    if (value.startsWith("+49") && value.length > 14) value = value.slice(0, 14);
+    if (value.startsWith("+49") && value.length > 14)
+      value = value.slice(0, 14);
     setValue("phone", value);
   };
 
-  // Обработка отправки формы
-  const onSubmit = (data) => {
-    if (onOrderSubmit) {
-      onOrderSubmit(data);
-    } else {
-      console.log(data);
+  // Form submit handler
+  const onSubmit = async (data) => {
+    try {
+      // Prepare order data
+      const orderData = {
+        customer: data,
+        items: cartItems,
+      };
+
+      // Send order to backend
+      await requestSendOrder(orderData);
+
+      // Call external submit handler if provided
+      if (onOrderSubmit) {
+        await onOrderSubmit(orderData);
+      }
+
+      // Show modal on success
+      if (onSuccess) {
+        onSuccess();
+      }
+
+      // Reset form after success
+      reset();
+    } catch (error) {
+      // Show error alert and reset form
+      alert("Error submitting order: " + (error?.message || "Unknown error"));
+      reset();
     }
   };
 
+  // Render form
   return (
     <form onSubmit={handleSubmit(onSubmit)} className={styles.form}>
+      {/* Name input */}
       <input
         {...register("name")}
         placeholder="Name"
@@ -73,6 +106,8 @@ const OrderForm = ({ onSubmit: onOrderSubmit }) => {
       {errors.name?.message && (
         <p className={styles.errors}>{errors.name.message}</p>
       )}
+
+      {/* Phone input */}
       <input
         {...register("phone")}
         onChange={formatPhoneInput}
@@ -82,6 +117,8 @@ const OrderForm = ({ onSubmit: onOrderSubmit }) => {
       {errors.phone?.message && (
         <p className={styles.errors}>{errors.phone.message}</p>
       )}
+
+      {/* Email input */}
       <input
         {...register("email")}
         placeholder="Email"
@@ -90,6 +127,8 @@ const OrderForm = ({ onSubmit: onOrderSubmit }) => {
       {errors.email?.message && (
         <p className={styles.errors}>{errors.email.message}</p>
       )}
+
+      {/* Submit button */}
       <button className={styles.button} type="submit">
         Order
       </button>

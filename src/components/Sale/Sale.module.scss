@@ -146,6 +146,7 @@
     .list {
       grid-template-columns: 1fr;
       gap: 20px;
+      justify-items: center; 
     }
 
     .item {

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { NavLink } from "react-router-dom";
 import { useSelector } from "react-redux";
 import CartImg from "../../assets/header/cart-empty.svg";
@@ -6,21 +6,41 @@ import Logo from "../../assets/header/pet-logo.svg";
 import styles from "./Header.module.scss";
 
 const Header = () => {
+  const [menuOpen, setMenuOpen] = useState(false);
+
   // Get cart items count from Redux
   const cartCount = useSelector((state) =>
     state.cart.items.reduce((sum, item) => sum + item.quantity, 0)
   );
 
+  const handleMenuToggle = () => setMenuOpen((prev) => !prev);
+  const handleLinkClick = () => setMenuOpen(false);
+
   return (
     <header className={styles.header}>
-      <nav>
+      <nav className={styles.nav}>
         <div className={styles.logo}>
           <NavLink to="/">
             <img className={styles.logoImg} src={Logo} alt="Logo" />
           </NavLink>
         </div>
 
-        <div className={styles.links}>
+        {/* Burger button */}
+        <button
+          className={styles.burger}
+          onClick={handleMenuToggle}
+          aria-label="Open menu"
+        >
+          <span />
+          <span />
+          <span />
+        </button>
+
+        {/* Navigation links */}
+        <div
+          className={`${styles.links} ${menuOpen ? styles.open : ""}`}
+          onClick={handleLinkClick}
+        >
           <NavLink
             to="/"
             className={({ isActive }) =>

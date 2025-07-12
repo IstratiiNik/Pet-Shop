@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import styles from "./Cart.module.scss";
 import { useSelector, useDispatch } from "react-redux";
 import { selectCartItems } from "../../redux/selectors";
@@ -6,20 +6,29 @@ import {
   incrementQty,
   decrementQty,
   removeFromCart,
+  clearCart,
 } from "../../redux/cartSlice";
 import OrderForm from "../OrderForm/OrderForm";
 import { Link } from "react-router-dom";
 import { ROUTES } from "../../utils/routes";
+import Modal from "../../ui/Modal/Modal";
 
 const Cart = () => {
   const cartItems = useSelector(selectCartItems);
   const dispatch = useDispatch();
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   const totalAmount = cartItems.reduce(
     (sum, item) => sum + (item.discont_price || item.price) * item.quantity,
     0
   );
   const totalQuantity = cartItems.reduce((sum, item) => sum + item.quantity, 0);
+
+  // Function for opening a modal window
+  const handleOrderSuccess = () => {
+    setIsModalOpen(true);
+    dispatch(clearCart());
+  };
 
   return (
     <section className={styles.cart}>
@@ -106,10 +115,20 @@ const Cart = () => {
                 <p className={styles.itemsCount}>Total</p>
                 <p className={styles.amount}>${totalAmount.toFixed(2)}</p>
               </div>
-              <OrderForm />
+              <OrderForm onSuccess={handleOrderSuccess} />
             </div>
           </aside>
         </div>
+      )}
+      {isModalOpen && (
+        <Modal onClose={() => setIsModalOpen(false)}>
+          <div className={styles.modalContent}>
+            <h2>Congratulations! </h2>
+            <p>Your order has been successfully placed on the website.</p>
+            <br />
+            <p>A manager will contact you shortly to confirm your order.</p>
+          </div>
+        </Modal>
       )}
     </section>
   );

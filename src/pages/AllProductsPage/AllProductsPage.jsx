@@ -78,27 +78,30 @@ const AllProductsPage = () => {
         onDiscountedChange={setDiscountedOnly}
         sort={sort}
         onSortChange={setSort}
-		  showDiscountedCheckbox={true}
+        showDiscountedCheckbox={true}
       />
       {/* Products list */}
       <ul className={styles.list}>
-        {filteredProducts.map(({ id, title, image, discont_price, price }) => {
-          const discountPercent = calculateDiscountPercent(
-            price,
-            discont_price
-          );
-          return (
-            <ProductCard
-              key={id}
-              id={id}
-              title={title}
-              image={image}
-              discountPercent={discountPercent}
-              discont_price={discont_price}
-              price={price}
-            />
-          );
-        })}
+        {filteredProducts.map(
+          ({ id, title, image, discont_price, price, description }) => {
+            const discountPercent = calculateDiscountPercent(
+              price,
+              discont_price
+            );
+            return (
+              <ProductCard
+                key={id}
+                id={id}
+                title={title}
+                image={image}
+                discountPercent={discountPercent}
+                discont_price={discont_price}
+                price={price}
+                description={description}
+              />
+            );
+          }
+        )}
       </ul>
     </section>
   );

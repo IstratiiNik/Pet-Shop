@@ -3,6 +3,7 @@ import styles from "./FormAction.module.scss";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useForm } from "react-hook-form";
 import { orderSchema } from "../../utils/orderSchema";
+import { requestSendDiscount } from "../../services/api";
 
 const FormAction = () => {
   // Initialize react-hook-form with validation
@@ -10,6 +11,7 @@ const FormAction = () => {
     register,
     handleSubmit,
     setValue,
+    reset,
     formState: { errors },
   } = useForm({
     defaultValues: {
@@ -21,8 +23,15 @@ const FormAction = () => {
   });
 
   // Handle form submission
-  const onSubmit = (data) => {
-    console.log(data);
+  const onSubmit = async (data) => {
+    try {
+      await requestSendDiscount(data);
+      alert("Your coupon request has been sent!");
+      reset();
+    } catch (error) {
+      alert("Error sending request: " + (error?.message || "Unknown error"));
+      reset();
+    }
   };
 
   // Format phone input and update value via setValue

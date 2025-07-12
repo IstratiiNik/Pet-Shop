@@ -28,3 +28,15 @@ export const requestProductById = async (productId) => {
   const { data } = await petInstance.get(`/products/${productId}`);
   return data;
 };
+
+// Send order
+export const requestSendOrder = async (orderData) => {
+  const { data } = await petInstance.post("/order/send", orderData);
+  return data;
+};
+
+// Send discount coupon request
+export const requestSendDiscount = async (formData) => {
+  const { data } = await petInstance.post("/sale/send", formData);
+  return data;
+};
