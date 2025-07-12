@@ -17,7 +17,7 @@ const Sale = () => {
     <section className={styles.sale}>
       <header className={styles.header}>
         <h2>Sale</h2>
-        <div className={styles.devider}></div>
+        <div className={styles.divider}></div>
         <Link className={styles.link} to={ROUTES.SALES}>
           All sales
         </Link>

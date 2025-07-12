@@ -9,7 +9,7 @@ const MainTitle = () => {
         <h1>
           Amazing Discounts <br /> on Pets Products!
         </h1>
-        <Link to={"/products"}>
+        <Link to={"/sales"}>
           <button className={styles.heroButton}>Check out</button>
         </Link>
       </div>
